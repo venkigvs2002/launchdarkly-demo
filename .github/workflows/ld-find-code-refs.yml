@@ -1,0 +1,17 @@
+name: LaunchDarkly Code References
+
+on:
+  push:
+    branches: [ main, master ]  # runs when you push to either branch
+
+jobs:
+  ld-find-code-refs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: LaunchDarkly Code References
+        uses: launchdarkly/find-code-references@v2.11.6
+        with:
+          accessToken: ${{ secrets.LD_ACCESS_TOKEN }}
+          projKey: "default"  # Replace with your actual LaunchDarkly project key
